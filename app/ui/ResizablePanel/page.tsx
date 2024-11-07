@@ -4,11 +4,7 @@ import { motion } from "framer-motion";
 import useMeasure from "react-use-measure";
 import { useEffect, useState, ReactNode } from "react";
 
-interface PageProps {
-  children: ReactNode;
-}
-
-const Page = ({ children }: PageProps) => {
+const ResizablePanel = ({ children }: { children: ReactNode }) => {
   const [ref, { height }] = useMeasure();
   const [initialHeight, setInitialHeight] = useState("auto");
 
@@ -30,4 +26,4 @@ const Page = ({ children }: PageProps) => {
   );
 };
 
-export default Page;
+export default ResizablePanel;
