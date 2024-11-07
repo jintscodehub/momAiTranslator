@@ -2,9 +2,13 @@
 
 import { motion } from "framer-motion";
 import useMeasure from "react-use-measure";
-import { useEffect, useState } from "react";
+import { useEffect, useState, ReactNode } from "react";
 
-export default function Page({ children }: { children: React.ReactNode }) {
+interface PageProps {
+  children: ReactNode;
+}
+
+const Page = ({ children }: PageProps) => {
   const [ref, { height }] = useMeasure();
   const [initialHeight, setInitialHeight] = useState("auto");
 
@@ -24,4 +28,6 @@ export default function Page({ children }: { children: React.ReactNode }) {
       </div>
     </motion.div>
   );
-}
+};
+
+export default Page;
