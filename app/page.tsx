@@ -5,7 +5,7 @@ import { Toaster, toast } from "react-hot-toast";
 import { Space_Grotesk } from "next/font/google";
 import { AnimatePresence, motion } from "framer-motion";
 
-import ResizablePanel from "./ui/ResizablePanel/page";
+import ResizablePanel from "./lib/ResizablePanel";
 import Header from "./ui/Header/page";
 
 const spaceGrotesk = Space_Grotesk({
