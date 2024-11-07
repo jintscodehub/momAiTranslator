@@ -6,10 +6,10 @@ import { SearchIcon } from "@heroicons/react/outline";
 import { ArrowSmRightIcon } from "@heroicons/react/solid";
 import { AnimatePresence, motion } from "framer-motion";
 
-import ResizablePanel from "../components/ResizablePanel";
+import ResizablePanel from "../app/ui/ResizablePanel/page";
 
-import Header from "../components/Header";
-import Footer from "../components/Footer";
+import Header from "../app/ui/Header/page";
+import Footer from "../app/ui/Footer/page";
 
 const spaceGrotesk = Space_Grotesk({
   weight: "700",

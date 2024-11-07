@@ -1,11 +1,12 @@
-import Head from "next/head";
+'use client'
+
 import React, { useState, FormEvent } from "react";
 import { Toaster, toast } from "react-hot-toast";
 import { Space_Grotesk } from "next/font/google";
 import { AnimatePresence, motion } from "framer-motion";
 
-import ResizablePanel from "../components/ResizablePanel";
-import Header from "../components/Header";
+import ResizablePanel from "./ui/ResizablePanel/page";
+import Header from "./ui/Header/page";
 
 const spaceGrotesk = Space_Grotesk({
   weight: "700",
@@ -18,7 +19,7 @@ const fetchOptions = {
   headers: { "Content-Type": "application/json" },
 };
 
-export default function Home(): JSX.Element {
+export default function Page(): JSX.Element {
   const [loading, setLoading] = useState<boolean>(false);
   const [englishText, setEnglishText] = useState<string>("");
   const [momInput, setMomInput] = useState<string>("");
@@ -42,11 +43,12 @@ export default function Home(): JSX.Element {
     setLoading(true);
 
     try {
-      const response = await fetch("/api/generate", {
+      const response = await fetch("/api/translate", {
         ...fetchOptions,
         body: JSON.stringify({ englishText, momInput }),
       });
       const data = await response.json();
+      
       setMandarinTranslation(data.mandarinTranslation);
       if (data.reply) {
         const [englishInterp, mandarinInterp, englishReply, mandarinReply, mandarinExplanation] = data.reply.split('\n\n');
@@ -73,17 +75,7 @@ export default function Home(): JSX.Element {
   };
 
   return (
-    <div className="flex flex-col items-center m-0 bg-blue-100 min-h-screen">
-      <Head>
-        <title>Mom&apos;s English Assistant</title>
-        <meta
-          name="description"
-          content="An AI-powered assistant to help with English communication"
-        />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
+    <>
       <Header />
 
       <div className="flex flex-col items-center pt-14 w-full px-4 md:px-0 max-w-screen-md">
@@ -206,6 +198,6 @@ export default function Home(): JSX.Element {
           </AnimatePresence>
         </ResizablePanel>
       </div>
-    </div>
+    </>
   );
 }
